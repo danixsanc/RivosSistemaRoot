@@ -1,0 +1,317 @@
+<!--BOTON FLOTANTE-->
+<div ng-click="cargarModalCountry(1, false, false, true, 'Agregar')" class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <a class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+  </a>
+</div>
+
+<!--BUSCADOR-->
+<nav class="indigo lighten-2">
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" ng-model="buscador" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons" ng-click="buscador=null">close</i>
+        </div>
+      </form>
+    </div>
+</nav>
+
+<!--VENTANA MODAL COUNTRY-->
+<div id="modalCountry" class="modal modal-fixed-footer">
+    <h4 style="margin:8px;">{{nameWindow}} Country</h4> 
+    
+
+    <div class="modal-content">
+        <div class="row">
+            <div class="input-field col m8 offset-m2">
+                <i class="material-icons prefix">location_on</i>
+                    <input id="name" type="text" ng-disabled="lectura" ng-model="datosCountry.name" required>
+                <label id="name" for="name" ng-class="{active: datosCountry.name}">Nombre</label>
+            </div>
+        </div>
+        </div>
+
+  <div class="modal-footer">
+        <a  
+            href="" 
+            ng-show="agregar" 
+            ng-click="addCabbieData(datosCountry)" 
+            class="green modal-action waves-effect waves-green btn">
+            Agregar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="lectura" 
+            class="green modal-action modal-close waves-effect waves-green btn">
+            Aceptar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar" 
+            ng-click="updateCabbieData(datosCountry)" 
+            class="green modal-action waves-effect waves-green btn">
+            Guardar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar||agregar" 
+            class="red modal-action modal-close waves-effect waves-red btn">
+            Cancelar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar||agregar" 
+            ng-click="limpiarCamposCabbie()" 
+            class="blue modal-action waves-effect waves-blue btn">
+            Limpiar
+        </a>
+    </div>
+</div>
+
+<!--VENTANA MODAL STATE-->
+<div id="modalState" class="modal modal-fixed-footer">
+    <h4 style="margin:8px;">{{nameWindow}} State</h4> 
+    
+
+    <div class="modal-content">
+        <div class="row">
+            <div class="input-field col m8 offset-m2">
+                <i class="material-icons prefix">location_on</i>
+                    <input id="name" type="text" ng-disabled="lectura" ng-model="datosState.name" required>
+                <label id="name" for="name" ng-class="{active: datosState.name}">Nombre</label>
+            </div>
+        </div>
+        </div>
+
+  <div class="modal-footer">
+        <a  
+            href="" 
+            ng-show="agregar" 
+            ng-click="addCabbieData(datosState)" 
+            class="green modal-action waves-effect waves-green btn">
+            Agregar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="lectura" 
+            class="green modal-action modal-close waves-effect waves-green btn">
+            Aceptar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar" 
+            ng-click="updateCabbieData(datosState)" 
+            class="green modal-action waves-effect waves-green btn">
+            Guardar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar||agregar" 
+            class="red modal-action modal-close waves-effect waves-red btn">
+            Cancelar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar||agregar" 
+            ng-click="limpiarCamposCabbie()" 
+            class="blue modal-action waves-effect waves-blue btn">
+            Limpiar
+        </a>
+    </div>
+</div>
+
+<!--VENTANA MODAL TOWN-->
+<div id="modalTown" class="modal modal-fixed-footer">
+    <h4 style="margin:8px;">{{nameWindow}} Town</h4> 
+    
+
+    <div class="modal-content">
+        <div class="row">
+            <div class="input-field col m8 offset-m2">
+                <i class="material-icons prefix">location_on</i>
+                    <input id="name" type="text" ng-disabled="lectura" ng-model="datosTown.name" required>
+                <label id="name" for="name" ng-class="{active: datosTown.name}">Nombre</label>
+            </div>
+        </div>
+        </div>
+
+  <div class="modal-footer">
+        <a  
+            href="" 
+            ng-show="agregar" 
+            ng-click="addCabbieData(datosTown)" 
+            class="green modal-action waves-effect waves-green btn">
+            Agregar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="lectura" 
+            class="green modal-action modal-close waves-effect waves-green btn">
+            Aceptar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar" 
+            ng-click="updateCabbieData(datosTown)" 
+            class="green modal-action waves-effect waves-green btn">
+            Guardar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar||agregar" 
+            class="red modal-action modal-close waves-effect waves-red btn">
+            Cancelar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar||agregar" 
+            ng-click="limpiarCamposCabbie()" 
+            class="blue modal-action waves-effect waves-blue btn">
+            Limpiar
+        </a>
+    </div>
+</div>
+
+
+<!--VENTANA MODAL ELIMINAR
+<div id="modalDeleteCabbie" class="modal deep-orange lighten-2">
+    <div class="card deep-orange lighten-1">
+        <div class="card-content white-text">
+            <span class="card-title">Eliminar</span>
+            <p>Seguro que desea eliminar a</p>
+            <p>{{ cabbieName }} ?</p>
+            <i class="xtralarge material-icons">delete</i>
+        </div>
+        <div class="card-action">
+            <a ng-click="deleteCabbieData(cabbie_id)" class="modal-action modal-close white waves-effect red-text waves-white btn">Eliminar</a>
+            <a class="red modal-action modal-close waves-effect waves-red white-text btn">Cancelar</a>
+        </div>
+    </div>
+</div>-->
+
+
+<!--TABLA DE DATOS-->
+<div class="row " ng-init = "cargarTabs()">
+    <div class="col s12">
+      <ul class="tabs z-depth-1">
+        <li class="tab col s4"><a href="#country">Paises</a></li>
+        <li class="tab col s4"><a class="active" href="#state">Estados</a></li>
+       <li class="tab col s4"><a class="active" href="#town">Ciudades</a></li>
+      </ul>
+    </div>
+
+
+<!--Country-->
+<div id="country" ng-init="cargarDatosCountry()">
+  <table class="bordered highlight centered">
+      <thead>
+        <tr>
+            <th data-field="country_id">Identificador</th>
+            <th data-field="name">Nombre</th>
+            <th data-field="action">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="itemCountry in lista|filter:buscador">
+          <td>{{ itemCountry.country_id }}</td>
+          <td>{{ itemCountry.name }}</td>
+          <td id="actions_country">
+                    <a ng-click="cargarModalCountry(itemCountry.country_id, true, false, false, 'Ver')" class="btn-floating btn-flat waves-effect waves-light">
+                        <i class="green-text material-icons">search</i>
+                    </a>
+                    <a ng-click="cargarModalCountry(itemCountry.country_id,false, true, false, 'Editar')" class="btn-floating btn-flat waves-effect waves-light">
+                        <i class="blue-text material-icons">mode_edit</i>
+                    </a>
+                    <a ng-click="deleteModalCabbie(itemCountry)" class="btn-floating btn-flat waves-effect waves-light">
+                        <i class="red-text material-icons">delete</i>
+                    </a>
+                </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+
+<!--State-->
+<div id="state" ng-init="cargarDatosState()">
+  <table class="bordered highlight centered">
+      <thead>
+        <tr>
+            <th data-field="state_id">Identificador</th>
+            <th data-field="name">Nombre</th>
+            <th data-field="action">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="itemState in listaS|filter:buscador">
+          <td>{{ itemState.state_id }}</td>
+          <td>{{ itemState.name }}</td>
+          <td id="actions_state">
+                    <a ng-click="cargarModalState(itemState.state_id, true, false, false, 'Ver')" class="btn-floating btn-flat waves-effect waves-light">
+                        <i class="green-text material-icons">search</i>
+                    </a>
+                    <a ng-click="cargarModalState(itemState.state_id,false, true, false, 'Editar')" class="btn-floating btn-flat waves-effect waves-light">
+                        <i class="blue-text material-icons">mode_edit</i>
+                    </a>
+                    <a ng-click="deleteModalCabbie(itemState)" class="btn-floating btn-flat waves-effect waves-light">
+                        <i class="red-text material-icons">delete</i>
+                    </a>
+                </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<!--Town-->
+<div id="town" ng-init="cargarDatosTown()">
+  <table class="bordered highlight centered">
+      <thead>
+        <tr>
+            <th data-field="town_id">Identificador</th>
+            <th data-field="name">Nombre</th>
+            <th data-field="action">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="itemTown in listaT|filter:buscador">
+          <td>{{ itemTown.town_id }}</td>
+          <td>{{ itemTown.name }}</td>
+          <td id="actions_town">
+
+                    <a ng-click="cargarModalTown(itemTown.town_id, true, false, false, 'Ver')" class="btn-floating btn-flat waves-effect waves-light">
+                        <i class="green-text material-icons">search</i>
+                    </a>
+                    <a ng-click="cargarModalTown(itemTown.town_id,false, true, false, 'Editar')" class="btn-floating btn-flat waves-effect waves-light">
+                        <i class="blue-text material-icons">mode_edit</i>
+                    </a>
+                    <a ng-click="deleteModalCabbie(itemTown)" class="btn-floating btn-flat waves-effect waves-light">
+                        <i class="red-text material-icons">delete</i>
+                    </a>
+                </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+
+        
+
+</div>
+

@@ -1,0 +1,139 @@
+<!--BUSCADOR-->
+<nav class="indigo lighten-2">
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" ng-model="buscador" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons" ng-click="buscador=null">close</i>
+        </div>
+      </form>
+    </div>
+</nav>
+
+<!--VENTANA MODAL-->
+<div id="modalClient" class="modal modal-fixed-footer">
+
+
+      <h4 style="margin:8px;">{{nameWindow}} Client</h4> 
+    
+  <div class="modal-content">
+        <div class="row">
+            <div class="input-field col m8 offset-m2">
+                <i class="material-icons prefix">person</i>
+                    <input id="client_name" type="text" ng-disabled="lectura" ng-model="datosClient.name" required>
+                <label id="client_name2" for="client_name" ng-class="{active: datosClient.name}">Nombre</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col m8 offset-m2">
+                <i class="material-icons prefix">email</i>
+                    <input id="client_email" type="email" ng-disabled="lectura" ng-model="datosClient.email" required>
+                <label for="client_email" ng-class="{active: datosClient.email}">Correo</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col m8 offset-m2">
+                <i class="material-icons prefix">phone</i>
+                    <input id="client_phone" type="text" ng-disabled="lectura" ng-model="datosClient.phone" required>
+                <label for="client_phone" ng-class="{active: datosClient.phone}">Telefono</label>
+            </div>
+        </div>
+
+        <div class="row" ng-show="agregar">
+            <div class="input-field col m8 offset-m2">
+                <i class="material-icons prefix">lock</i>
+                    <input id="client_password" type="password" ng-model="datosClient.password" required>
+                <label for="client_password" ng-class="{active: datosClient.password}">Contraseña</label>
+            </div>
+        </div>
+
+        <div class="row" ng-show="agregar">
+            <div class="input-field col m8 offset-m2">
+                <i class="material-icons prefix">lock</i>
+                    <input id="client_passwordrepeat" type="password" ng-model="datosClient.passwordrepeat" required>
+                <label for="client_passwordrepeat" ng-class="{active: datosClient.passwordrepeat}">Repetir Contraseña</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-footer">
+        <a  
+            href="" 
+            ng-show="agregar" 
+            ng-click="addClientData(datosClient)" 
+            class="green modal-action waves-effect waves-green btn">
+            Agregar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="lectura" 
+            class="green modal-action modal-close waves-effect waves-green btn">
+            Aceptar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar" 
+            ng-click="updateClientData(datosClient)" 
+            class="green modal-action waves-effect waves-green btn">
+            Guardar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar||agregar" 
+            class="red modal-action modal-close waves-effect waves-red btn">
+            Cancelar
+        </a>
+
+        <a 
+            href="" 
+            ng-show="modificar||agregar" 
+            ng-click="limpiarCamposClient()" 
+            class="blue modal-action waves-effect waves-blue btn">
+            Limpiar
+        </a>
+    </div>
+</div>
+
+
+
+
+<!--TABLA DE DATOS-->
+<div ng-init="cargaDatosClient()">
+  <table class="bordered highlight centered">
+      <thead>
+        <tr>
+            <th data-fiel="name">Nombre</th>
+            <th data-field="email">Telefono</th>
+            <th data-field="phone">Correo</th>
+            <th data-field="action">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="itemClient in lista | filter:buscador">
+          <td>{{ itemClient.name }}</td>
+          <td>{{ itemClient.phone }}</td>
+          <td>{{ itemClient.email }}</td>
+          <td id="actions_client">
+            <a ng-click="cargarModalClient(itemClient.client_id, true, false, false, 'Ver')" class="btn-floating btn-flat waves-effect waves-light">
+                <i class="green-text material-icons">search</i>
+            </a><!--
+            <a href="edit.php?id={{itemAdmin.uid}}" class="btn-floating btn-flat waves-effect waves-light">
+            <i class="blue-text material-icons">mode_edit</i>
+            </a>
+            <a href="edit.php?id={{itemAdmin.uid}}" class="btn-floating btn-flat waves-effect waves-light">
+            <i class="red-text material-icons">delete</i>
+            </a>-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+
